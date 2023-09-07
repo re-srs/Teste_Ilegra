@@ -33,4 +33,18 @@ public class PesquisarAssuntoSteps extends RunCucumberTeste {
         //System.out.println(mensagemTela);
         Assert.assertEquals("Resultados da busca por: teste", mensagemTela );
     }
+
+    @Dado("^nao preencho o campo pesquisar$")
+    public void nao_preencho_o_campo_pesquisar() throws Throwable {
+        homePage.clicarBotaoLupa();
+        homePage.preencheCampoPesquisa("");
+    }
+
+    @Então("^vejo uma lista com as pesquisas default feitas com sucesso$")
+    public void vejo_uma_lista_com_as_pesquisas_default_feitas_com_sucesso() throws Throwable {
+        String mensagemTela = homePage.validarMensagemNaTela();
+        //System.out.println(mensagemTela);
+        Assert.assertEquals("Resultados da busca por:", mensagemTela );
+    }
+
 }
